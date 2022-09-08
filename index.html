@@ -38,6 +38,36 @@
           </thead>
           <tbody id="dataGridTbody"></tbody>
         </table>
+        <div id="pagination-container">
+          <div id="page-size-select-container">
+            <label for="page-size-select">ارتفاع جدول</label>
+            <select
+              name="pageSize"
+              id="page-size-select"
+              onchange="changePageSize(this.value)"
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+          <button id="previous-page-btn" onclick="goToPreviousPage()">
+            قبلی
+          </button>
+          <ul id="pages-btn-list">
+            <li>
+              <button onclick="changePage(parseInt(this.innerHTML))">1</button>
+            </li>
+            <li>
+              <button onclick="changePage(parseInt(this.innerHTML))">2</button>
+            </li>
+            <li>
+              <button onclick="changePage(parseInt(this.innerHTML))">3</button>
+            </li>
+          </ul>
+          <button id="next-page-btn" onclick="goToNextPage()">بعدی</button>
+        </div>
       </div>
       <div
         class="col-2 col-sm-12 col-lg-2 bg-dark d-flex flex-sm-row flex-lg-column justify-content-center align-items-center gap-3 mb-sm-3 mb-lg-0 p-3"

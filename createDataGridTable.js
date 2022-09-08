@@ -23,15 +23,20 @@ const columns = [
 ];
 const rows = [
   { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
-  { id: 1, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 2, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 3, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 4, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 5, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 6, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 7, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 8, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 9, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 10, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 11, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 12, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 13, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 14, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
+  { id: 15, lastName: "صفرپور", firstName: "علیرضا", age: 35 },
 ];
 
 function checkBoxANDtheadConstructor() {
@@ -59,11 +64,52 @@ function checkBoxANDtheadConstructor() {
 }
 checkBoxANDtheadConstructor();
 
+const columnsFields = [];
+for (let i = 0; i < columns.length; i++) {
+  columnsFields.push(columns[i].field);
+}
+
+let page = 1;
+let rowStart = 0;
+let pageSize = 5;
+let rowEnd = rowStart + pageSize - 1;
+
+function changePage(newPageNumber) {
+  page = newPageNumber;
+  rowStart = (page - 1) * pageSize;
+  rowEnd = page * pageSize - 1;
+
+  executeNewTableBody();
+}
+
+function changePageSize(newSize) {
+  pageSize = parseInt(newSize);
+  rowStart = (page - 1) * pageSize;
+  rowEnd = page * pageSize - 1;
+  executeNewTableBody();
+}
+
+function goToPreviousPage() {
+  page--;
+  rowStart = (page - 1) * pageSize;
+  rowEnd = page * pageSize - 1;
+  executeNewTableBody();
+}
+
+function goToNextPage() {
+  page++;
+  rowStart = (page - 1) * pageSize;
+  rowEnd = page * pageSize - 1;
+  executeNewTableBody();
+}
+
 const tBody = document.querySelector("#dataGridTbody");
 const message = document.querySelector("h1");
 const showAllColumnsBtn = document.querySelector("#showAllColumnsBtn");
 const hideAllColumnsBtn = document.querySelector("#hideAllColumnsBtn");
 const checkBoxes = document.querySelectorAll("input[type=checkbox]");
+const previousBtn = document.querySelector("#previous-page-btn");
+const nextBtn = document.querySelector("#next-page-btn");
 
 function conditionsConstructor() {
   const conditions = [];
@@ -120,6 +166,23 @@ function hideMessage() {
   message.classList.add("hide");
 }
 
+function activatePreviousBtn() {
+  previousBtn.disabled = false;
+}
+
+function activateNextBtn() {
+  nextBtn.disabled = false;
+}
+
+function disActivatePreviousBtn() {
+  previousBtn.disabled = true;
+}
+
+function disActivateNextBtn() {
+  nextBtn.disabled = true;
+}
+
+//////////////////////////////////
 function executeNewTableBody() {
   tBody.innerHTML = "";
 
@@ -149,12 +212,19 @@ function executeNewTableBody() {
     showMessage();
   }
 
-  const columnsFields = [];
-  for (let i = 0; i < columns.length; i++) {
-    columnsFields.push(columns[i].field);
-  }
+  /////////////////////////////////////////
+  console.log("pageSize", pageSize);
+  console.log("page", page);
+  console.log("rowStart", rowStart);
+  console.log("rowEnd", rowEnd);
+  console.log("////////////////////////////");
+  if (rowStart <= 0) disActivatePreviousBtn();
+  else activatePreviousBtn();
+  if (rowEnd + 1 >= rows.length) disActivateNextBtn();
+  else activateNextBtn();
 
-  for (let i = 0; i < rows.length; i++) {
+  for (let i = rowStart; i <= rowEnd; i++) {
+    if (!rows[i]) break;
     const tr = document.createElement("tr");
     for (let j = 0; j < columnsFields.length; j++) {
       const td = document.createElement("td");

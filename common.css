@@ -15,3 +15,24 @@ td {
 h1 {
   text-align: center;
 }
+
+#pagination-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+#pages-btn-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  gap: 5px;
+}
+
+#page-size-select-container {
+  margin-left: auto;
+}
