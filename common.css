@@ -1,0 +1,17 @@
+.hide {
+  display: none;
+}
+
+th {
+  border: solid 3px wheat;
+  padding: 15px;
+}
+
+td {
+  border: solid 1px wheat;
+  padding: 5px;
+}
+
+h1 {
+  text-align: center;
+}
