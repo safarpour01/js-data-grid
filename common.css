@@ -1,7 +1,3 @@
-.hide {
-  display: none;
-}
-
 th {
   border: solid 3px wheat;
   padding: 15px;
@@ -33,6 +29,11 @@ h1 {
   gap: 5px;
 }
 
-#page-size-select-container {
+#show-state {
   margin-left: auto;
+  margin-right: 20px;
+}
+
+.hide {
+  display: none;
 }

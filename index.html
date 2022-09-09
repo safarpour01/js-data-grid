@@ -31,7 +31,7 @@
       <div
         class="col-9 col-sm-12 col-lg-9 bg-dark text-center p-4 d-flex flex-column justify-content-center align-items-center"
       >
-        <h1>ستون‌های مورد نیاز خود را انتخاب نمائید :)</h1>
+        <h1>لطفاً ستون‌های مورد نیاز خود را انتخاب نمائید :)</h1>
         <table width="100%">
           <thead>
             <tr id="TableheadingRow"></tr>
@@ -52,18 +52,13 @@
               <option value="100">100</option>
             </select>
           </div>
+          <span id="show-state"></span>
           <button id="previous-page-btn" onclick="goToPreviousPage()">
             قبلی
           </button>
           <ul id="pages-btn-list">
             <li>
               <button onclick="changePage(parseInt(this.innerHTML))">1</button>
-            </li>
-            <li>
-              <button onclick="changePage(parseInt(this.innerHTML))">2</button>
-            </li>
-            <li>
-              <button onclick="changePage(parseInt(this.innerHTML))">3</button>
             </li>
           </ul>
           <button id="next-page-btn" onclick="goToNextPage()">بعدی</button>
@@ -90,6 +85,9 @@
         </button>
       </div>
     </div>
+    <script src="./data.js"></script>
+    <script src="./createCheckBoxANDtheadths.js"></script>
+    <script src="./pagination.js"></script>
     <script src="./createDataGridTable.js"></script>
   </body>
 </html>
