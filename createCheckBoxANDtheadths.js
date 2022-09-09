@@ -18,6 +18,11 @@ function checkBoxANDtheadConstructor() {
     const th = document.createElement("th");
     th.className = `col${i + 1} hide`;
     th.innerHTML = `${columns[i].headerName}`;
+    th.setAttribute("name", columns[i].field);
+    th.addEventListener("click", () => {
+      sortBySelectedColumn(th);
+    });
+    th.style.cursor = "pointer";
     theadTr.appendChild(th);
   }
 }

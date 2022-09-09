@@ -46,13 +46,16 @@ function disActivateHideAllColumnsBtn() {
 
 const message = document.querySelector("h1");
 const pagination = document.querySelector("#pagination-container");
+const exportBtn = document.querySelector("#export_button");
 function showMessage() {
   message.classList.remove("hide");
   pagination.style = "display:none";
+  exportBtn.style = "display:none";
 }
 function hideMessage() {
   message.classList.add("hide");
   pagination.style = "display:flex";
+  exportBtn.style = "display:block";
 }
 
 const previousBtn = document.querySelector("#previous-page-btn");
@@ -68,6 +71,21 @@ function disActivatePreviousBtn() {
 }
 function disActivateNextBtn() {
   nextBtn.disabled = true;
+}
+
+function sortBySelectedColumn(selectedColumn) {
+  const selectedColumnTDsArr = [];
+  for (let i = 0; i < rows.length; i++) {
+    selectedColumnTDsArr.push(rows[i][selectedColumn.getAttribute("name")]);
+  }
+
+  if (typeof selectedColumnTDsArr[0] === "number")
+    selectedColumnTDsArr.sort(function compareFunc(a, b) {
+      return a - b;
+    });
+  else selectedColumnTDsArr.sort();
+
+  console.log(selectedColumnTDsArr);
 }
 
 //////////////////////////////////
@@ -103,7 +121,7 @@ function executeNewTableBody() {
 
   /////////////////////////////////////////
   const showState = document.querySelector("#show-state");
-  showState.innerHTML = `نمایش ${rowStart + 1} تا ${
+  showState.innerHTML = `${rowStart + 1} تا ${
     rows.length < rowEnd ? rows.length : rowEnd + 1
   } از ${rows.length}`;
 
@@ -147,6 +165,7 @@ function executeNewTableBody() {
         td.className = `col${j + 1} hide`;
       }
       td.innerHTML = rows[i][columnsFields[j]] || "---";
+      td.setAttribute("name", columns[j].field);
       tr.appendChild(td);
     }
     tBody.appendChild(tr);
