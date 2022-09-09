@@ -111,10 +111,16 @@ const rows = [
     firstName: "علیرضا",
     age: 14,
   },
-  {
-    id: 15,
-    lastName: "صفرپور",
-    firstName: "علیرضا",
-    age: 15,
-  },
+  // {
+  //   id: 15,
+  //   lastName: "صفرپور",
+  //   firstName: "علیرضا",
+  //   age: 15,
+  // },
+  // {
+  //   id: 16,
+  //   lastName: "صفرپور",
+  //   firstName: "علیرضا",
+  //   age: 16,
+  // },
 ];

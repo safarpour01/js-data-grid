@@ -34,6 +34,10 @@ h1 {
   margin-right: 20px;
 }
 
+.active-page-btn {
+  background: green;
+}
+
 .hide {
   display: none;
 }

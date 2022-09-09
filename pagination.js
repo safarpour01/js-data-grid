@@ -12,6 +12,7 @@ function changePage(newPageNumber) {
 }
 
 function changePageSize(newSize) {
+  page = 1;
   pageSize = parseInt(newSize);
   rowStart = (page - 1) * pageSize;
   rowEnd = page * pageSize - 1;

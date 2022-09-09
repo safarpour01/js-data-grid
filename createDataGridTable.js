@@ -103,9 +103,24 @@ function executeNewTableBody() {
 
   /////////////////////////////////////////
   const showState = document.querySelector("#show-state");
-  showState.innerHTML = `نمایش ${rowStart + 1} تا ${rowEnd + 1} از ${
-    rows.length
-  }`;
+  showState.innerHTML = `نمایش ${rowStart + 1} تا ${
+    rows.length < rowEnd ? rows.length : rowEnd + 1
+  } از ${rows.length}`;
+
+  const pagesBtnList = document.querySelector("#pages-btn-list");
+  pagesBtnList.innerHTML = "";
+  for (let i = 0; i < Math.ceil(rows.length / pageSize); i++) {
+    pagesBtnList.innerHTML += `
+      <li>
+        <button onclick="changePage(parseInt(this.innerHTML));" class="page-${
+          i + 1
+        }-btn">${i + 1}</button>
+      </li>
+    `;
+  }
+
+  document.querySelector(`.page-${page}-btn`).style =
+    "background-color: green; color: white;";
 
   if (rowStart <= 0) disActivatePreviousBtn();
   else activatePreviousBtn();
