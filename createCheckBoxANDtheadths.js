@@ -22,6 +22,9 @@ function checkBoxANDtheadConstructor() {
     th.addEventListener("click", () => {
       sortBySelectedColumn(th);
     });
+    th.addEventListener("click", () => {
+      toggleSortedColumn(th);
+    });
     th.style.cursor = "pointer";
     theadTr.appendChild(th);
   }
