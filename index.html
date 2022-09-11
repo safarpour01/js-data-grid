@@ -71,12 +71,14 @@
       </div>
 
       <div id="result">
-        <table width="100%" id="export-table" class="table table-striped">
-          <thead class="thead-dark">
-            <tr id="TableheadingRow"></tr>
-          </thead>
-          <tbody id="dataGridTbody"></tbody>
-        </table>
+        <div id="table-container">
+          <table width="100%" id="export-table" class="table table-striped">
+            <thead class="thead-dark">
+              <tr id="TableheadingRow"></tr>
+            </thead>
+            <tbody id="dataGridTbody"></tbody>
+          </table>
+        </div>
 
         <div id="pagination-container">
           <div style="display: flex; align-items: center; flex-basis: 250px">
@@ -87,6 +89,7 @@
                 class="form-select"
                 onchange="changePageSize(this.value)"
               >
+                <option value="all">همه</option>
                 <option value="5">5</option>
                 <option value="10" selected>10</option>
                 <option value="25">25</option>
@@ -114,10 +117,12 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div id="empty-result">
-        <h1>لطفاً ستون‌های مورد نیاز خود را انتخاب نمائید :)</h1>
-      </div>
+    <div id="empty-result">
+      <h1 style="margin-top: 100px">
+        لطفاً ستون‌های مورد نیاز خود را انتخاب نمائید :)
+      </h1>
     </div>
 
     <script src="./data.js"></script>

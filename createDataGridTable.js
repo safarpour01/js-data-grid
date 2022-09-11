@@ -47,15 +47,18 @@ function disActivateHideAllColumnsBtn() {
 const message = document.querySelector("h1");
 const pagination = document.querySelector("#pagination-container");
 const exportBtn = document.querySelector("#excel-export-button");
+const result = document.querySelector("#result");
 function showMessage() {
   message.classList.remove("hide");
   pagination.style = "display:none";
   exportBtn.style = "display:none";
+  result.style = "display:none";
 }
 function hideMessage() {
   message.classList.add("hide");
   pagination.style = "display:flex";
   exportBtn.style = "display:block";
+  result.style = "display:block";
 }
 
 const previousBtn = document.querySelector("#previous-page-btn");
@@ -91,7 +94,6 @@ function toggleSortedColumn(selectedColumn) {
       ascending: true,
     };
   }
-  console.log(sortedColumnName);
   executeNewTableBody();
 }
 

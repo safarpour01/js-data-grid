@@ -1,8 +1,6 @@
 .main-container {
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   padding: 16px;
 }
 
@@ -35,13 +33,31 @@
   z-index: 999;
 }
 
+#table-container {
+  height: calc(100vh - 400px);
+  overflow-y: scroll;
+  padding: 0;
+}
+
+#table-container::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  border-radius: 100px;
+}
+
+#table-container::-webkit-scrollbar-track {
+  border: 1px solid green;
+}
+
+#table-container::-webkit-scrollbar-thumb {
+  background-color: green;
+  border-radius: 100px;
+}
+
 #export-table {
-  margin-top: 70px;
   border-radius: 8px;
   position: relative;
-  height: 100px;
-  max-height: 100px;
-  overflow: scroll;
+  top: 70px;
 }
 
 #export-table tr:hover td {
@@ -53,7 +69,7 @@
   background-color: #222;
   color: white;
   position: sticky;
-  top: 76px;
+  top: 60px;
 }
 
 #export-table th,
@@ -77,6 +93,17 @@ td {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#pagination-container {
+  display: flex;
+  width: calc(100% - 32px);
+  gap: 8px;
+  position: fixed;
+  z-index: 999;
+  background-color: rgb(255, 255, 255);
+  padding: 20px 0px;
+  bottom: 295x;
 }
 
 #nex-previous-pagination-container {

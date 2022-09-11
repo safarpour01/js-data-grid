@@ -13,7 +13,8 @@ function changePage(newPageNumber) {
 
 function changePageSize(newSize) {
   page = 1;
-  pageSize = parseInt(newSize);
+  if (newSize === "all") pageSize = rows.length;
+  else pageSize = parseInt(newSize);
   rowStart = (page - 1) * pageSize;
   rowEnd = page * pageSize - 1;
 
