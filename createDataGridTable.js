@@ -46,7 +46,7 @@ function disActivateHideAllColumnsBtn() {
 
 const message = document.querySelector("h1");
 const pagination = document.querySelector("#pagination-container");
-const exportBtn = document.querySelector("#export_button");
+const exportBtn = document.querySelector("#excel-export-button");
 function showMessage() {
   message.classList.remove("hide");
   pagination.style = "display:none";
@@ -201,15 +201,15 @@ function executeNewTableBody() {
   for (let i = 0; i < Math.ceil(rows.length / pageSize); i++) {
     pagesBtnList.innerHTML += `
       <li>
-        <button onclick="changePage(parseInt(this.innerHTML));" class="page-${
+        <button onclick="changePage(parseInt(this.innerHTML));" class="btn btn-secondary page-${
           i + 1
         }-btn">${i + 1}</button>
       </li>
     `;
   }
 
-  document.querySelector(`.page-${page}-btn`).style =
-    "background-color: green; color: white;";
+  document.querySelector(`.page-${page}-btn`).classList.remove("btn-secondary");
+  document.querySelector(`.page-${page}-btn`).classList.add("btn-primary");
 
   if (rowStart <= 0) disActivatePreviousBtn();
   else activatePreviousBtn();
@@ -235,7 +235,7 @@ function executeNewTableBody() {
         th.classList.add("hide");
         td.className = `col${j + 1} hide`;
       }
-      td.innerHTML = rows[i][columnsFields[j]] || "---";
+      td.innerHTML = rows[i][columnsFields[j]] || " --- ";
       td.setAttribute("name", columns[j].field);
       tr.appendChild(td);
     }

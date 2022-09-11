@@ -1,6 +1,6 @@
 let page = 1;
 let rowStart = 0;
-let pageSize = 5;
+let pageSize = 10;
 let rowEnd = rowStart + pageSize - 1;
 
 function changePage(newPageNumber) {

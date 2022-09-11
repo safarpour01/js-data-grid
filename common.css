@@ -1,37 +1,96 @@
-th {
-  border: solid 3px wheat;
-  padding: 15px;
+.main-container {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  padding: 16px;
 }
 
+.top-bar {
+  display: flex;
+  width: calc(100% - 32px);
+  gap: 8px;
+  position: fixed;
+  z-index: 999;
+  background-color: rgb(255, 255, 255);
+  padding: 20px 0px;
+  top: 0;
+}
+
+#toggle-columns-btn {
+  position: relative;
+}
+
+#all-checkboxes-container {
+  min-width: 200px;
+  top: calc(100% + 5px);
+  right: 0;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#export-table {
+  margin-top: 70px;
+  border-radius: 8px;
+  position: relative;
+  height: 100px;
+  max-height: 100px;
+  overflow: scroll;
+}
+
+#export-table tr:hover td {
+  transition: 0.15s;
+  background-color: #ccc;
+}
+
+#export-table th {
+  background-color: #222;
+  color: white;
+  position: sticky;
+  top: 76px;
+}
+
+#export-table th,
 td {
-  border: solid 1px wheat;
-  padding: 5px;
-}
-
-h1 {
   text-align: center;
 }
 
-#pagination-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0px;
+#excel-export-button {
+  margin-right: auto;
 }
 
 #pages-btn-list {
   list-style-type: none;
+  margin: 0px 15px;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
   gap: 5px;
 }
 
+#pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nex-previous-pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: calc(100% - 100px);
+}
+
 #show-state {
-  margin-left: auto;
   margin-right: 20px;
+}
+
+h1 {
+  text-align: center;
 }
 
 .active-page-btn {
