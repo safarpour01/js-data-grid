@@ -198,19 +198,11 @@ function executeNewTableBody() {
     rows.length < rowEnd ? rows.length : rowEnd + 1
   } از ${rows.length}`;
 
-  const pagesBtnList = document.querySelector("#pages-btn-list");
-  pagesBtnList.innerHTML = "";
-  for (let i = 0; i < Math.ceil(rows.length / pageSize); i++) {
-    pagesBtnList.innerHTML += `
-      <li>
-        <button onclick="changePage(parseInt(this.innerHTML));" class="btn btn-secondary page-${
-          i + 1
-        }-btn">${i + 1}</button>
-      </li>
-    `;
-  }
+  showOnly5buttons(page);
 
-  document.querySelector(`.page-${page}-btn`).classList.remove("btn-secondary");
+  document
+    .querySelector(`.page-${page}-btn`)
+    .classList.remove("btn-outline-primary");
   document.querySelector(`.page-${page}-btn`).classList.add("btn-primary");
 
   if (rowStart <= 0) disActivatePreviousBtn();

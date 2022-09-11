@@ -106,10 +106,9 @@ td {
   bottom: 295x;
 }
 
-#nex-previous-pagination-container {
+#next-previous-pagination-container {
   display: flex;
   justify-content: flex-end;
-  flex-basis: calc(100% - 100px);
 }
 
 #show-state {
