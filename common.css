@@ -9,7 +9,7 @@
   width: calc(100% - 32px);
   gap: 8px;
   position: fixed;
-  z-index: 999;
+  z-index: 997;
   background-color: rgb(255, 255, 255);
   padding: 20px 0px;
   top: 0;
@@ -30,7 +30,7 @@
   padding: 16px;
   border-radius: 8px;
   overflow: hidden;
-  z-index: 999;
+  z-index: 998;
 }
 
 #table-container {
@@ -91,24 +91,21 @@ td {
 
 #pagination-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-#pagination-container {
-  display: flex;
   width: calc(100% - 32px);
   gap: 8px;
   position: fixed;
-  z-index: 999;
+  z-index: 997;
   background-color: rgb(255, 255, 255);
   padding: 20px 0px;
-  bottom: 295x;
+  bottom: 295px;
 }
 
 #next-previous-pagination-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-right: 20px;
 }
 
 #show-state {
@@ -125,4 +122,16 @@ h1 {
 
 .hide {
   display: none;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }

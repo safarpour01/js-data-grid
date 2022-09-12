@@ -8,7 +8,27 @@ function showOnly5buttons(page) {
   pagesBtnList.innerHTML = "";
 
   if (Math.ceil(rows.length / pageSize) > 5) {
-    for (let i = page - 1; i < Math.ceil(rows.length / pageSize); i++) {
+    let start;
+    let end;
+
+    if (page === 1) {
+      start = page - 1;
+      end = start + 5;
+    }
+    if (page === 2) {
+      start = page - 2;
+      end = start + 5;
+    }
+    if (page > 2) {
+      start = page - 3;
+      end = start + 5;
+    }
+    if (page >= Math.ceil(rows.length / pageSize) - 1) {
+      start = Math.ceil(rows.length / pageSize) - 5;
+      end = Math.ceil(rows.length / pageSize);
+    }
+
+    for (let i = start; i < end; i++) {
       pagesBtnList.innerHTML += `
       <li>
         <button onclick="changePage(parseInt(this.innerHTML));" class="btn btn-outline-primary page-${

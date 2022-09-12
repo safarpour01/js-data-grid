@@ -163,78 +163,86 @@ function sortBySelectedColumn(selectedColumn) {
 
 //////////////////////////////////
 function executeNewTableBody() {
-  const tBody = document.querySelector("#dataGridTbody");
-  tBody.innerHTML = "";
+  const loading = document.querySelector("#loading");
+  loading.style.display = "flex";
 
-  let checkBoxesAreDifferent = false;
-  const conditions = conditionsConstructor();
+  setTimeout(() => {
+    const tBody = document.querySelector("#dataGridTbody");
+    tBody.innerHTML = "";
 
-  for (let i = 1; i < conditions.length; i++) {
-    if (conditions[0] !== conditions[i]) {
-      checkBoxesAreDifferent = true;
-      break;
-    }
-  }
-  if (checkBoxesAreDifferent) {
-    activateButtons();
-    hideMessage();
-  }
-  //all checkboxes are checked
-  if (!checkBoxesAreDifferent && conditions[0]) {
-    activateHideAllColumnsBtn();
-    disActivateShowAllColumnsBtn();
-    hideMessage();
-  }
-  //all checkboxes are unchecked
-  if (!checkBoxesAreDifferent && !conditions[0]) {
-    activateShowAllColumnsBtn();
-    disActivateHideAllColumnsBtn();
-    showMessage();
-  }
+    let checkBoxesAreDifferent = false;
+    const conditions = conditionsConstructor();
 
-  /////////////////////////////////////////
-  const showState = document.querySelector("#show-state");
-  showState.innerHTML = `${rowStart + 1} تا ${
-    rows.length < rowEnd ? rows.length : rowEnd + 1
-  } از ${rows.length}`;
-
-  showOnly5buttons(page);
-
-  document
-    .querySelector(`.page-${page}-btn`)
-    .classList.remove("btn-outline-primary");
-  document.querySelector(`.page-${page}-btn`).classList.add("btn-primary");
-
-  if (rowStart <= 0) disActivatePreviousBtn();
-  else activatePreviousBtn();
-  if (rowEnd + 1 >= rows.length) disActivateNextBtn();
-  else activateNextBtn();
-
-  const columnsFields = [];
-  for (let i = 0; i < columns.length; i++) {
-    columnsFields.push(columns[i].field);
-  }
-
-  for (let i = rowStart; i <= rowEnd; i++) {
-    if (!rows[i]) break;
-    const tr = document.createElement("tr");
-    for (let j = 0; j < columnsFields.length; j++) {
-      const td = document.createElement("td");
-      const th = document.querySelector(`th.col${j + 1}`);
-
-      if (conditions[j]) {
-        th.classList.remove("hide");
-        td.className = `col${j + 1}`;
-      } else {
-        th.classList.add("hide");
-        td.className = `col${j + 1} hide`;
+    for (let i = 1; i < conditions.length; i++) {
+      if (conditions[0] !== conditions[i]) {
+        checkBoxesAreDifferent = true;
+        break;
       }
-      td.innerHTML = rows[i][columnsFields[j]] || " --- ";
-      td.setAttribute("name", columns[j].field);
-      tr.appendChild(td);
     }
-    tBody.appendChild(tr);
-  }
+    if (checkBoxesAreDifferent) {
+      activateButtons();
+      hideMessage();
+    }
+    //all checkboxes are checked
+    if (!checkBoxesAreDifferent && conditions[0]) {
+      activateHideAllColumnsBtn();
+      disActivateShowAllColumnsBtn();
+      hideMessage();
+    }
+    //all checkboxes are unchecked
+    if (!checkBoxesAreDifferent && !conditions[0]) {
+      activateShowAllColumnsBtn();
+      disActivateHideAllColumnsBtn();
+      showMessage();
+    }
+
+    /////////////////////////////////////////
+    const showState = document.querySelector("#show-state");
+    showState.innerHTML = `${rowStart + 1} تا ${
+      rows.length < rowEnd ? rows.length : rowEnd + 1
+    } از ${rows.length}`;
+
+    showOnly5buttons(page);
+
+    document
+      .querySelector(`.page-${page}-btn`)
+      .classList.remove("btn-outline-primary", "disabled");
+    document
+      .querySelector(`.page-${page}-btn`)
+      .classList.add("btn-primary", "disabled");
+
+    if (rowStart <= 0) disActivatePreviousBtn();
+    else activatePreviousBtn();
+    if (rowEnd + 1 >= rows.length) disActivateNextBtn();
+    else activateNextBtn();
+
+    const columnsFields = [];
+    for (let i = 0; i < columns.length; i++) {
+      columnsFields.push(columns[i].field);
+    }
+
+    for (let i = rowStart; i <= rowEnd; i++) {
+      if (!rows[i]) break;
+      const tr = document.createElement("tr");
+      for (let j = 0; j < columnsFields.length; j++) {
+        const td = document.createElement("td");
+        const th = document.querySelector(`th.col${j + 1}`);
+
+        if (conditions[j]) {
+          th.classList.remove("hide");
+          td.className = `col${j + 1}`;
+        } else {
+          th.classList.add("hide");
+          td.className = `col${j + 1} hide`;
+        }
+        td.innerHTML = rows[i][columnsFields[j]] || " --- ";
+        td.setAttribute("name", columns[j].field);
+        tr.appendChild(td);
+      }
+      tBody.appendChild(tr);
+    }
+    loading.style.display = "none";
+  }, 1);
 }
 
 showAllColumnsHandler();
