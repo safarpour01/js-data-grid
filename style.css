@@ -76,15 +76,22 @@
 }
 
 #export-table th {
+  transition: 0.25s;
   background-color: #222;
   color: white;
   position: sticky;
   top: 0px;
 }
 
+#export-table th:hover {
+  transition: 0.25s;
+  opacity: 0.75;
+}
+
 #export-table th,
 td {
   text-align: center;
+  border-left: 1px rgb(216, 216, 216) solid;
 }
 
 #excel-export-button {

@@ -79,23 +79,24 @@ function disActivateNextBtn() {
   nextBtn.disabled = true;
 }
 
-let sortedColumnName;
+let sortedColumn;
+
 function toggleSortedColumn(selectedColumn) {
-  if (!sortedColumnName) {
-    sortedColumnName = {
-      column: selectedColumn.getAttribute("name"),
+  if (!sortedColumn) {
+    sortedColumn = {
+      name: selectedColumn.getAttribute("name"),
       label: selectedColumn.getAttribute("value"),
       ascending: true,
     };
-  } else if (selectedColumn.getAttribute("name") === sortedColumnName.column) {
-    sortedColumnName = {
-      column: selectedColumn.getAttribute("name"),
+  } else if (selectedColumn.getAttribute("name") === sortedColumn.name) {
+    sortedColumn = {
+      name: selectedColumn.getAttribute("name"),
       label: selectedColumn.getAttribute("value"),
-      ascending: !sortedColumnName.ascending,
+      ascending: !sortedColumn.ascending,
     };
   } else {
-    sortedColumnName = {
-      column: selectedColumn.getAttribute("name"),
+    sortedColumn = {
+      name: selectedColumn.getAttribute("name"),
       label: selectedColumn.getAttribute("value"),
       ascending: true,
     };
@@ -113,67 +114,30 @@ function sortBySelectedColumn(selectedColumn) {
   }
 
   if (typeof tempArr[0].sortIndex === "number") {
-    tempArr.sort(function compareFunc(a, b) {
-      return a.sortIndex - b.sortIndex;
+    tempArr.sort((a, b) => {
+      if (sortedColumn.ascending) return a.sortIndex - b.sortIndex;
+      else return b.sortIndex - a.sortIndex;
     });
-  } else {
-    tempArr.sort(function compareFunc(a, b) {
-      if (a.sortIndex > b.sortIndex) return 1;
-      else if (a.sortIndex < b.sortIndex) return -1;
-      else return 0;
+  } else
+    tempArr.sort((a, b) => {
+      if (sortedColumn.ascending) return a.sortIndex.localeCompare(b.sortIndex);
+      else return b.sortIndex.localeCompare(a.sortIndex);
     });
-  }
 
   rows = [];
   for (let i = 0; i < tempArr.length; i++) {
     rows.push(tempArr[i].data);
   }
+
   executeNewTableBody();
-
-  if (sortedColumnName) {
-    tempArr = [];
-    for (let i = 0; i < rows.length; i++) {
-      tempArr.push({
-        data: rows[i],
-        sortIndex: rows[i][sortedColumnName.column],
-      });
-    }
-
-    if (typeof tempArr[0].sortIndex === "number") {
-      if (sortedColumnName.ascending)
-        tempArr.sort(function compareFunc(a, b) {
-          if (sortedColumnName.ascending) return b.sortIndex - a.sortIndex;
-          else return b.sortIndex - a.sortIndex;
-        });
-    } else {
-      tempArr.sort(function compareFunc(a, b) {
-        if (sortedColumnName.ascending) {
-          if (a.sortIndex > b.sortIndex) return 1;
-          else if (a.sortIndex < b.sortIndex) return -1;
-          else return 0;
-        } else {
-          if (a.sortIndex > b.sortIndex) return -1;
-          else if (a.sortIndex < b.sortIndex) return 1;
-          else return 0;
-        }
-      });
-    }
-
-    rows = [];
-    for (let i = 0; i < tempArr.length; i++) {
-      rows.push(tempArr[i].data);
-    }
-    executeNewTableBody();
-  }
 }
 
 function showSortedStatus() {
-  console.log("sortedColumnName", sortedColumnName);
-  if (sortedColumnName) {
+  if (sortedColumn) {
     sortStatus.innerHTML = `جدول براساس ستون <b><u><i>${
-      sortedColumnName.label
+      sortedColumn.label
     }</i></u></b> به صورت <b><u><i>${
-      sortedColumnName.ascending ? "صعودی" : "نزولی"
+      sortedColumn.ascending ? "صعودی" : "نزولی"
     }</i></u></b> مرتب شده است!`;
   } else {
     sortStatus.innerHTML =

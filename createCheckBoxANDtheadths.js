@@ -21,10 +21,10 @@ function checkBoxANDtheadConstructor() {
     th.setAttribute("name", columns[i].field);
     th.setAttribute("value", columns[i].headerName);
     th.addEventListener("click", () => {
-      sortBySelectedColumn(th);
+      toggleSortedColumn(th);
     });
     th.addEventListener("click", () => {
-      toggleSortedColumn(th);
+      sortBySelectedColumn(th);
     });
     th.style.cursor = "pointer";
     theadTr.appendChild(th);
