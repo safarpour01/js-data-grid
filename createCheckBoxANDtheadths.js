@@ -2,11 +2,12 @@ function checkBoxANDtheadConstructor() {
   const allCheckBoxContainer = document.querySelector(
     "#all-checkboxes-container"
   );
+  allCheckBoxContainer.style.boxShadow = "0px 0px 2000px 50px black";
   const theadTr = document.querySelector("#TableheadingRow");
 
   for (let i = 0; i < columns.length; i++) {
     const div = document.createElement("div");
-    div.className = "form-check form-switch";
+    div.className = "form-check form-switch d-flex justify-content-between";
     div.innerHTML = `<label class="form-check-label" for="col${i + 1}">${
       columns[i].headerName
     }</label><input class="form-check-input" type="checkbox" id="col${

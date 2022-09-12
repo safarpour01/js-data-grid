@@ -29,7 +29,7 @@
 #all-checkboxes-container {
   min-width: 200px;
   top: calc(100% + 5px);
-  right: 0;
+  right: -2px;
   position: absolute;
   display: none;
   flex-direction: column;
