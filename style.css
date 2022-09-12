@@ -1,18 +1,25 @@
 .main-container {
   width: 100%;
-  height: 100%;
-  padding: 16px;
+  min-width: 683px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .top-bar {
   display: flex;
-  width: calc(100% - 32px);
+  width: 100%;
   gap: 8px;
-  position: fixed;
   z-index: 997;
   background-color: rgb(255, 255, 255);
-  padding: 20px 0px;
   top: 0;
+}
+
+#result {
+  display: flex !important;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #toggle-columns-btn {
@@ -34,19 +41,21 @@
 }
 
 #table-container {
-  height: calc(100vh - 400px);
+  max-height: 451px;
   overflow-y: scroll;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #table-container::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   border-radius: 100px;
 }
 
 #table-container::-webkit-scrollbar-track {
   border: 1px solid green;
+  border-radius: 100px;
 }
 
 #table-container::-webkit-scrollbar-thumb {
@@ -55,9 +64,10 @@
 }
 
 #export-table {
+  margin: 0 !important;
+  padding: 0 !important;
   border-radius: 8px;
   position: relative;
-  top: 70px;
 }
 
 #export-table tr:hover td {
@@ -69,7 +79,7 @@
   background-color: #222;
   color: white;
   position: sticky;
-  top: 60px;
+  top: 0px;
 }
 
 #export-table th,
@@ -89,17 +99,18 @@ td {
   gap: 5px;
 }
 
+#sort-status {
+  margin: 0 !important;
+}
+
 #pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 32px);
+  width: 100%;
   gap: 8px;
-  position: fixed;
-  z-index: 997;
   background-color: rgb(255, 255, 255);
-  padding: 20px 0px;
-  bottom: 295px;
+  margin: 0 !important;
 }
 
 #next-previous-pagination-container {

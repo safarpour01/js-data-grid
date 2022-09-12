@@ -48,17 +48,20 @@ const message = document.querySelector("h1");
 const pagination = document.querySelector("#pagination-container");
 const exportBtn = document.querySelector("#excel-export-button");
 const result = document.querySelector("#result");
+const sortStatus = document.querySelector("#sort-status");
 function showMessage() {
   message.classList.remove("hide");
   pagination.style = "display:none";
   exportBtn.style = "display:none";
   result.style = "display:none";
+  sortStatus.style = "display:none";
 }
 function hideMessage() {
   message.classList.add("hide");
   pagination.style = "display:flex";
   exportBtn.style = "display:block";
   result.style = "display:block";
+  sortStatus.style = "display:block";
 }
 
 const previousBtn = document.querySelector("#previous-page-btn");
@@ -81,16 +84,19 @@ function toggleSortedColumn(selectedColumn) {
   if (!sortedColumnName) {
     sortedColumnName = {
       column: selectedColumn.getAttribute("name"),
+      label: selectedColumn.getAttribute("value"),
       ascending: true,
     };
   } else if (selectedColumn.getAttribute("name") === sortedColumnName.column) {
     sortedColumnName = {
       column: selectedColumn.getAttribute("name"),
+      label: selectedColumn.getAttribute("value"),
       ascending: !sortedColumnName.ascending,
     };
   } else {
     sortedColumnName = {
       column: selectedColumn.getAttribute("name"),
+      label: selectedColumn.getAttribute("value"),
       ascending: true,
     };
   }
@@ -158,6 +164,20 @@ function sortBySelectedColumn(selectedColumn) {
       rows.push(tempArr[i].data);
     }
     executeNewTableBody();
+  }
+}
+
+function showSortedStatus() {
+  console.log("sortedColumnName", sortedColumnName);
+  if (sortedColumnName) {
+    sortStatus.innerHTML = `جدول براساس ستون <b><u><i>${
+      sortedColumnName.label
+    }</i></u></b> به صورت <b><u><i>${
+      sortedColumnName.ascending ? "صعودی" : "نزولی"
+    }</i></u></b> مرتب شده است!`;
+  } else {
+    sortStatus.innerHTML =
+      "با کلیک بر روی هر سرستون، جدول را به شکل دلخواه مرتب سازی نمائید!";
   }
 }
 
@@ -243,6 +263,8 @@ function executeNewTableBody() {
     }
     loading.style.display = "none";
   }, 1);
+
+  showSortedStatus();
 }
 
 showAllColumnsHandler();

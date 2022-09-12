@@ -7,7 +7,7 @@
     <title>data grid table</title>
 
     <link rel="stylesheet" href="./bootstrap.css" />
-    <link rel="stylesheet" href="./common.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div id="loading">
@@ -76,7 +76,7 @@
 
       <div id="result">
         <div id="table-container">
-          <table width="100%" id="export-table" class="table table-striped">
+          <table id="export-table" class="table table-striped">
             <thead class="thead-dark">
               <tr id="TableheadingRow"></tr>
             </thead>
@@ -120,13 +120,17 @@
             </button>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div id="empty-result">
-      <h1 style="margin-top: 100px">
-        لطفاً ستون‌های مورد نیاز خود را انتخاب نمائید :)
-      </h1>
+        <div
+          id="sort-status"
+          class="alert alert-info text-center"
+          role="alert"
+        ></div>
+      </div>
+
+      <div id="empty-result">
+        <h1>لطفاً ستون‌های مورد نیاز خود را انتخاب نمائید :)</h1>
+      </div>
     </div>
 
     <script src="./data.js"></script>
