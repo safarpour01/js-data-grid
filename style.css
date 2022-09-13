@@ -1,14 +1,50 @@
 .main-container {
   width: 100%;
-  min-width: 683px;
+  height: 100vh;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.main-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 100px;
+}
+
+.main-container::-webkit-scrollbar-track {
+  border: 1px solid green;
+  border-radius: 100px;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+  background-color: green;
+  border-radius: 100px;
+}
+
+#loading {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
 .top-bar {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   gap: 8px;
   z-index: 997;
@@ -103,6 +139,8 @@ td {
   margin: 0px 15px;
   padding: 0;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 5px;
 }
 
@@ -114,8 +152,9 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
-  gap: 8px;
+  gap: 20px;
   background-color: rgb(255, 255, 255);
   margin: 0 !important;
 }
@@ -123,11 +162,16 @@ td {
 #next-previous-pagination-container {
   display: flex;
   justify-content: center;
-  margin-right: 20px;
+  flex-wrap: wrap;
 }
-
-#show-state {
-  margin-right: 20px;
+/* style="display: flex; align-items: center; min-width: 200px" */
+#show-state-and-select-page-size-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* min-width: 200px; */
 }
 
 h1 {
@@ -140,16 +184,4 @@ h1 {
 
 .hide {
   display: none;
-}
-
-#loading {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
 }

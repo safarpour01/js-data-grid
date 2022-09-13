@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="loading">
-      <span class="sr-only">در حال پردازش ... </span>
-      <div
-        class="spinner-border"
-        role="status"
-        style="margin-right: 20px"
-      ></div>
-    </div>
     <div class="fluid-container main-container">
+      <div id="loading">
+        <span class="sr-only">در حال پردازش ... </span>
+        <div
+          class="spinner-border"
+          role="status"
+          style="margin-right: 20px"
+        ></div>
+      </div>
       <div class="top-bar">
         <button id="toggle-columns-btn" class="btn btn-secondary">
           <svg
@@ -85,7 +85,7 @@
         </div>
 
         <div id="pagination-container">
-          <div style="display: flex; align-items: center; min-width: 200px">
+          <div id="show-state-and-select-page-size-container">
             <div id="page-size-select-container">
               <select
                 name="pageSize"
