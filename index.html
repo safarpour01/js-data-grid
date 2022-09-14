@@ -19,8 +19,9 @@
           style="margin-right: 20px"
         ></div>
       </div>
+
       <div class="top-bar">
-        <button id="toggle-columns-btn" class="btn btn-secondary">
+        <button id="toggle-columns-btn" class="btn btn-outline-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -40,20 +41,36 @@
 
         <button
           onclick="showAllColumnsHandler()"
-          class="btn btn-success"
+          class="btn btn-outline-success"
           id="showAllColumnsBtn"
         >
           نمایش همه ستون‌ها
         </button>
         <button
           onclick="hideAllColumnsHandler()"
-          class="btn btn-danger"
+          class="btn btn-outline-danger"
           id="hideAllColumnsBtn"
           disabled
         >
           مخفی کردن همه ستون‌ها
         </button>
 
+        <button id="show-filters-btn" class="btn btn-outline-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-funnel-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"
+            />
+          </svg>
+          فیلتر
+          <div id="filters-container" class="bg-dark"></div>
+        </button>
         <button id="excel-export-button" class="btn btn-success">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +114,7 @@
                 <option value="5">5</option>
                 <option value="10" selected>10</option>
                 <option value="25">25</option>
+                <option value="50">50</option>
                 <option value="100">100</option>
               </select>
             </div>
@@ -134,10 +152,11 @@
     </div>
 
     <script src="./data.js"></script>
+    <script src="./manipiulateDOM.js"></script>
     <script src="./createCheckBoxANDtheadths.js"></script>
+    <script src="./filterContaainerInit.js"></script>
     <script src="./pagination.js"></script>
     <script src="./createDataGridTable.js"></script>
-    <script src="./manipiulateDOM.js"></script>
     <script src="./export.js"></script>
     <script src="xlsx.full.js"></script>
   </body>

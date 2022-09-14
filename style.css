@@ -42,6 +42,26 @@
   color: #fff;
 }
 
+#filters-container {
+  min-width: 200px;
+  top: 52px;
+  right: 9px;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 998;
+  box-shadow: black 0px 0px 2000px 50px;
+}
+
+#add-filter-btn {
+  position: absolute;
+}
+
 .top-bar {
   display: flex;
   flex-wrap: wrap;
@@ -50,6 +70,15 @@
   z-index: 997;
   background-color: rgb(255, 255, 255);
   top: 0;
+}
+
+.filterRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 #result {
@@ -130,9 +159,9 @@ td {
   border-left: 1px rgb(216, 216, 216) solid;
 }
 
-#excel-export-button {
-  margin-right: auto;
-}
+/* #show-filters-btn {
+  position: relative;
+} */
 
 #pages-btn-list {
   list-style-type: none;

@@ -1,5 +1,3 @@
-checkBoxANDtheadConstructor();
-
 const checkBoxes = document.querySelectorAll("input[type=checkbox]");
 function conditionsConstructor() {
   const conditions = [];
@@ -219,7 +217,7 @@ function executeNewTableBody() {
           th.classList.add("hide");
           td.className = `col${j + 1} hide`;
         }
-        td.innerHTML = rows[i][columnsFields[j]] || " --- ";
+        td.innerHTML = rows[i][columnsFields[j]] || "";
         td.setAttribute("name", columns[j].field);
         tr.appendChild(td);
       }
