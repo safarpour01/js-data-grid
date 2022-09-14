@@ -72,13 +72,17 @@
   top: 0;
 }
 
-.filterRow {
+.filter-row {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
   margin: 0;
   padding: 0;
+}
+
+.filter-row select {
+  width: 90px;
 }
 
 #result {
