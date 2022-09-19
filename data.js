@@ -32,14 +32,14 @@ let rows = [
     lastName: "صفرپور",
     firstName: "علیرضا",
     age: 25,
-    birthDate: "1375/09/06",
+    birthDate: "1375/09/08",
   },
   {
     id: 6,
     lastName: "میرحسینی",
     firstName: "مهدی",
     age: 23,
-    birthDate: " ",
+    birthDate: "1375/09/06",
   },
   {
     id: 7,
@@ -50,7 +50,7 @@ let rows = [
   {
     id: 8,
     lastName: "پور عبدالهی",
-    firstName: "عبداله",
+    // firstName: "عبداله",
     age: 18,
     birthDate: "1377/09/14",
   },

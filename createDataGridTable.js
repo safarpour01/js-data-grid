@@ -111,20 +111,36 @@ function sortBySelectedColumn(selectedColumn) {
     });
   }
 
-  if (typeof tempArr[0].sortIndex === "number") {
-    tempArr.sort((a, b) => {
+  console.log("sortedTempArr", tempArr);
+  let emptySortIndexes = [];
+  let notEmptySortIndexes = [];
+  for (let i = 0; i < tempArr.length; i++) {
+    if (!tempArr[i].sortIndex) {
+      emptySortIndexes.push(tempArr[i].data);
+    } else {
+      notEmptySortIndexes.push(tempArr[i]);
+    }
+  }
+  console.log("emptySortIndexes", emptySortIndexes);
+
+  if (typeof notEmptySortIndexes[0].sortIndex === "number") {
+    notEmptySortIndexes.sort((a, b) => {
       if (sortedColumn.ascending) return a.sortIndex - b.sortIndex;
       else return b.sortIndex - a.sortIndex;
     });
-  } else
-    tempArr.sort((a, b) => {
+  } else {
+    notEmptySortIndexes.sort((a, b) => {
       if (sortedColumn.ascending) return a.sortIndex.localeCompare(b.sortIndex);
       else return b.sortIndex.localeCompare(a.sortIndex);
     });
+  }
 
   rows = [];
-  for (let i = 0; i < tempArr.length; i++) {
-    rows.push(tempArr[i].data);
+  for (let i = 0; i < notEmptySortIndexes.length; i++) {
+    rows.push(notEmptySortIndexes[i].data);
+  }
+  for (let i = 0; i < emptySortIndexes.length; i++) {
+    rows.push(emptySortIndexes[i]);
   }
 
   executeNewTableBody();
